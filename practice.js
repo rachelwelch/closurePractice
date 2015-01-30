@@ -45,7 +45,15 @@ var callFriend = function(){
   Write a function called makeCounter that makes the following code work properly.
 */
 
-  //Code Here
+  var makeCounter = function() {
+    var num = 0;
+    var countUp = function() {
+      return num += 1;
+    }
+    return countUp;
+  }
+
+
   var count = makeCounter();
   count() // 1
   count() // 2
@@ -64,6 +72,48 @@ var callFriend = function(){
   Once completed, add a second arguments that allows the function to be invoked N number of times.
   After the function has been called N number of times, console.log('STAHHP');
 */
+
+  var first = function(cb) {
+    var counter = 0;
+    return function() {
+      counter += 1;
+      if (counter < 2) {
+        return cb();
+      }
+    }
+  }
+
+  var second = first(function() {
+    alert("Rachel");
+  });
+  second();
+
+///// Second function below
+
+  var first = function(cb, n) {
+    var counter = 0;
+    return function() {
+      counter += 1;
+      if (counter < n) {
+        return cb();
+      }
+    }
+  }
+
+  var second = first(function() {
+    alert("Rachel");
+  }, 5);
+  second();
+
+
+
+
+
+
+
+
+
+
 
 
 
