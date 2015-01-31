@@ -96,6 +96,8 @@ var callFriend = function(){
       counter += 1;
       if (counter < n) {
         return cb();
+      } else {
+        console.log('Stop');
       }
     }
   }
@@ -104,6 +106,29 @@ var callFriend = function(){
     alert("Rachel");
   }, 5);
   second();
+
+
+  /// another option
+
+  var fn = function(cb, n) {
+    return cb(n);
+  }
+
+  var callBackFn = function(n) {
+    return function() {
+      n--;
+      if(n >= 1) {
+        console.log('weeeee');
+      } else {
+        console.log('stop');
+      }
+    }
+  }
+
+  var inner = fn(callBackFn, 3);
+  inner();
+
+
 
 
 
